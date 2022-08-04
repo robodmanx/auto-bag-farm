@@ -16,5 +16,7 @@ game.Players.LocalPlayer.CharacterAdded:Connect(function(chr)
             syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/robodmanx/auto-bag-farm/main/main.lua'))()")
         end
     end)
-    game:GetService('TeleportService'):Teleport(game.PlaceId, game.Players.LocalPlayer)
+    print('laa')
+    game:GetService('TeleportService'):Teleport(game.PlaceId)
+    print('lowl")
 end)
