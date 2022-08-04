@@ -1,22 +1,29 @@
-game.Players.LocalPlayer.CharacterAdded:Connect(function(chr)
-    wait(1)
-    for i,v in pairs(workspace:GetChildren()) do
-        if v.ClassName == 'Model' then
-            if v:FindFirstChild('BagTouchScript') then
-                local type = v.Rarity.Value
-                if table.find({'Ultimate','Resplendent'}, type) then
-                    warn('ITS HAPPENING')
-                    break
+function ddo()
+    local s; s =game.Players.LocalPlayer.CharacterAdded:Connect(function(chr)
+        wait(1)
+        for i,v in pairs(workspace:GetChildren()) do
+            if v.ClassName == 'Model' then
+                if v:FindFirstChild('BagTouchScript') then
+                    local type = v.Rarity.Value
+                    if table.find({'Ultimate','Resplendent'}, type) then
+                        warn('ITS HAPPENING')
+                        s:Disconnect()
+                        break
+                    end
                 end
             end
         end
-    end
-    game.Players.LocalPlayer.OnTeleport:Connect(function(s)
-        if s == Enum.TeleportState.Started then
-            syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/robodmanx/auto-bag-farm/main/main.lua'))()")
-        end
+        game.Players.LocalPlayer.OnTeleport:Connect(function(s)
+            if s == Enum.TeleportState.Started then
+                syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/robodmanx/auto-bag-farm/main/main.lua'))()")
+            end
+        end)
+        print('laa')
+        game:GetService('TeleportService'):Teleport(game.PlaceId)
+        print('lowl')
     end)
-    print('laa')
-    game:GetService('TeleportService'):Teleport(game.PlaceId)
-    print('lowl")
-end)
+end
+repeat
+    wait()
+until game.Players.LocalPlayer
+ddo()
